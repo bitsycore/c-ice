@@ -5,7 +5,9 @@
 #include "Assert_.h"
 #include "../Core/Debug.h"
 
-ICE_DEBUG_ONLY size_t _thing_to_free_ = 0;
+#ifdef _DEBUG
+size_t _thing_to_free_ = 0;
+#endif
 
 void* ICE_Malloc(size_t _Size)
 {
@@ -16,7 +18,9 @@ void* ICE_Malloc(size_t _Size)
 		ICE_Assert(ptr != NULL, "(Malloc) Failed to allocate memory");
 	}
 
-	ICE_DEBUG_ONLY _thing_to_free_++;
+#ifdef _DEBUG
+	_thing_to_free_++;
+#endif
 
 	return ptr;
 }
@@ -49,7 +53,10 @@ void* ICE_Realloc(void* _Block, size_t _Size)
 void ICE_Free(void* _Block)
 {
 	free(_Block);
-	ICE_DEBUG_ONLY _thing_to_free_--;
+
+#if defined(_DEBUG)
+	_thing_to_free_--;
+#endif
 }
 
 #if defined(_DEBUG)

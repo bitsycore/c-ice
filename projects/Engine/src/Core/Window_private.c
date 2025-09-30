@@ -1,8 +1,8 @@
-﻿#include <SDL2/SDL.h>
+﻿#include "SDL2_Includer.h"
+#include ICE_INCLUDE_SDL2
 #include "TypesCore.h"
 #include "Window.h"
 #include "Window_private.h"
-#include "../Framework/Log.h"
 
 extern ICE_Config CONFIG;
 extern ICE_Core CORE;

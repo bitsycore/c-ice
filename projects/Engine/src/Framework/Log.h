@@ -23,17 +23,17 @@ enum ICE_LogTypes
 	/// Use in log or other va_args thing : ICE_Log("Is that true ? : %s", ICE_LOG_TRUEFALSE(myBool))
 	#define ICE_LOG_TRUEFALSE(X) X?ICE_MACROTOOLS_STRINGIZE(True):ICE_MACROTOOLS_STRINGIZE(False)
 
-	#define ICE_Log_Error(FORMAT, ...) ICE_Log(ICE_LOGTYPE_ERROR, FORMAT, __VA_ARGS__ )
-	#define ICE_Log_Critical(FORMAT, ...) ICE_Log(ICE_LOGTYPE_CRITICAL, FORMAT, __VA_ARGS__ )
-	#define ICE_Log_Warning(FORMAT, ...) ICE_Log(ICE_LOGTYPE_WARNING, FORMAT, __VA_ARGS__ )
-	#define ICE_Log_Info(FORMAT, ...) ICE_Log(ICE_LOGTYPE_INFO, FORMAT, __VA_ARGS__)
-	#define ICE_Log_Succes(FORMAT, ...) ICE_Log(ICE_LOGTYPE_SUCCES, FORMAT, __VA_ARGS__)
-	#define ICE_Log_Running(FORMAT, ...) ICE_Log(ICE_LOGTYPE_RUNNING, FORMAT, __VA_ARGS__)
-	#define ICE_Log_Finish(FORMAT, ...) ICE_Log(ICE_LOGTYPE_FINISH, FORMAT, __VA_ARGS__)
-	#define ICE_Log(TYPE, FORMAT, ...) ICE_Log_(0, __FILE__, __LINE__, TYPE, FORMAT, __VA_ARGS__)
+	#define ICE_Log_Error(FORMAT, ...) ICE_Log(ICE_LOGTYPE_ERROR, FORMAT, ##__VA_ARGS__ )
+	#define ICE_Log_Critical(FORMAT, ...) ICE_Log(ICE_LOGTYPE_CRITICAL, FORMAT, ##__VA_ARGS__ )
+	#define ICE_Log_Warning(FORMAT, ...) ICE_Log(ICE_LOGTYPE_WARNING, FORMAT, ##__VA_ARGS__ )
+	#define ICE_Log_Info(FORMAT, ...) ICE_Log(ICE_LOGTYPE_INFO, FORMAT, ##__VA_ARGS__)
+	#define ICE_Log_Succes(FORMAT, ...) ICE_Log(ICE_LOGTYPE_SUCCES, FORMAT, ##__VA_ARGS__)
+	#define ICE_Log_Running(FORMAT, ...) ICE_Log(ICE_LOGTYPE_RUNNING, FORMAT, ##__VA_ARGS__)
+	#define ICE_Log_Finish(FORMAT, ...) ICE_Log(ICE_LOGTYPE_FINISH, FORMAT, ##__VA_ARGS__)
+	#define ICE_Log(TYPE, FORMAT, ...) ICE_Log_(0, __FILE__, __LINE__, TYPE, FORMAT, ##__VA_ARGS__)
 	void ICE_Log_(int nb_tab, const char* file, int line, ICE_LogTypes type, const char * format, ...);
 
-	#define ICE_Log_NoReturn(TYPE, FORMAT, ...) ICE_Log_NoReturn_(__FILE__, __LINE__, TYPE, FORMAT, __VA_ARGS__)
+	#define ICE_Log_NoReturn(TYPE, FORMAT, ...) ICE_Log_NoReturn_(__FILE__, __LINE__, TYPE, FORMAT, ##__VA_ARGS__)
 	void ICE_Log_NoReturn_(const char* file, int line, ICE_LogTypes type, const char * format, ...);
 	
 	void ICE_Log_Line();

@@ -90,4 +90,6 @@ int ICE_UT_MAIN()
 		ICE_UT_EQUAL(ICE_String_Contain(test9), 603);
 		ICE_String_Destroy(&test9);
 	}
+
+	return 0;
 }

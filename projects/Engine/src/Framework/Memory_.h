@@ -10,7 +10,7 @@ void ICE_Free(void* _Block);
 #if defined(_DEBUG)
 size_t ICE_Memory_NbFreeToDo();
 #else
-#define ICE_Memory_NbFreeToDo()
+#define ICE_Memory_NbFreeToDo() 0
 #endif
 
 #endif

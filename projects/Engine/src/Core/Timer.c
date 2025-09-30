@@ -1,6 +1,7 @@
 ﻿#include "Timer.h"
 
-#include <SDL2/SDL.h>
+#include "SDL2_Includer.h"
+#include ICE_INCLUDE_SDL2
 
 void ICE_Timer_Start(ICE_Timer * timer_)
 {

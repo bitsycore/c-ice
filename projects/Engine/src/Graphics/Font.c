@@ -1,14 +1,13 @@
 #include "Font.h"
 
+#include "Color_private.h"
 #include "../Core/SDL2_Includer.h"
 #include ICE_INCLUDE_SDL2_TTF
 
 #include "TypesGraphics.h"
-#include "Color_private.h"
 
 #include "../Core/Window.h"
 #include "../Framework/Log.h"
-#include "../Maths/TypesMaths.h"
 
 extern ICE_Game GAME;
 extern ICE_Core CORE;
@@ -18,7 +17,7 @@ ICE_FontID ICE_Font_Load(char *path)
 {
 	for (int i = 0; i < 256; i++) {
 		ASSET.font.size[i] = TTF_OpenFont(path, i);
-		if (!ASSET.font.size[i])
+		if (ASSET.font.size[i] == NULL)
 			ICE_Log(ICE_LOGTYPE_CRITICAL, "%s\n", TTF_GetError());
 	}
 

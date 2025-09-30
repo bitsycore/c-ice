@@ -5,10 +5,10 @@
 #include "Macrotools.h"
 
 #define ICE_UT_EQUAL(X, Z) if(X != Z)\
-	{ ICE_Log_Error("Error at line %d in file %s", __LINE__, __FILE__); ICE_Log_printf(ICE_MACROTOOLS_STRINGIZE(X## != ##Z##\n)); global_status_ut = ICE_True; global_number_error_happened++;}\
+	{ ICE_Log_Error("Error at line %d in file %s", __LINE__, __FILE__); ICE_Log_printf(ICE_MACROTOOLS_STRINGIZE(X != Z) "\n"); global_status_ut = ICE_True; global_number_error_happened++;}\
 
 #define ICE_UT_COMPARE(X, Y, Z) if(!(X Y Z))\
-	{ ICE_Log_Error("Error at line %d in file %s", __LINE__, __FILE__); ICE_Log_printf(ICE_MACROTOOLS_STRINGIZE(X##Y##Z##\n)); global_status_ut = ICE_True; global_number_error_happened++;}\
+	{ ICE_Log_Error("Error at line %d in file %s", __LINE__, __FILE__); ICE_Log_printf(ICE_MACROTOOLS_STRINGIZE(X) ICE_MACROTOOLS_STRINGIZE(Y) ICE_MACROTOOLS_STRINGIZE(Z) "\n"); global_status_ut = ICE_True; global_number_error_happened++;}\
 
 #define ICE_UT_MAIN() global_status_ut = ICE_False;\
 	int global_number_error_happened = 0;\
